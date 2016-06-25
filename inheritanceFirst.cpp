@@ -17,7 +17,8 @@ using namespace std;
           {
                 height = h;
           }
-	   unsigned int getArea() { return (width * height); }
+	   virtual unsigned int getArea() { return (width * height); }
+	virtual ~Shape() { cout << "Shapre distrcutor is called \n"; }
 
      protected:
            int width;
@@ -57,8 +58,9 @@ class qube : public Square
 	public :
 		qube(unsigned int side) : Square(side) { depth = side ;}
 		qube() { cout << "qube constrcutor is called \n"; }
-		unsigned int getArea() { return Square::getArea() * depth; }
-
+		virtual unsigned int getArea() { return Square::getArea() * depth; }
+		//virtual 
+               ~qube() { cout << "qube distrcutor is called \n "; }
 	private :
 
 		unsigned int depth;
@@ -71,16 +73,17 @@ int main(void)
     rect->setHeight(7);
     Square * sqr = new Square(5);
     qube * qb =  new qube(10);
-    Shape * sp = new Shape();
-     cout << " before assigned drived pointer  " << sp->getArea() << "\n";
+    Shape * sp = new Shape()  ;
+     //cout << " before assigned drived pointer  " << sp->getArea() << "\n";
 
-   rect = sp;
+   sp  = rect;
      cout << " after assigned drived pointer  " << sp->getArea() << "\n";
 
    sp = qb;
      cout << " after assigned grand children class  " << sp->getArea() << "\n";
+   delete (sp);
    // Print the area of the object.
-   //cout << "Total area: " << Rect.getArea() << endl;
+   cout << "Total area: " << qb->getArea() << endl;
    //cout << "Total sq area: " << sqr.getArea() << endl;
 
    return 0;
