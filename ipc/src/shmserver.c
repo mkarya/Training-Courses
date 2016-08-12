@@ -23,6 +23,8 @@ int main (int argc, char ** argv) {
 	memcpy(shared_ptr, "server says hello", 17);
 	
 	while (*shared_ptr != '*') sleep (1);
+
+	shmdt(shared_ptr);
 	
 	return 0;
 }
