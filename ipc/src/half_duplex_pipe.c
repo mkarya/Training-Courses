@@ -34,6 +34,7 @@ int main(int argc, char **argv) {
 		strcpy(buf, "hello from parent");
 		write(pipefd[1],buf,sizeof(buf));
 		wait(NULL);
+		for(;;);
 		exit(0);
 	}	
 		
