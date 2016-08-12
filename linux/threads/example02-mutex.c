@@ -10,9 +10,11 @@ void * sum_of_number(void *argv) {
 	long * limit_ptr = (long *) argv;
 	long limit = *limit_ptr;
 	pthread_mutex_lock(&mutex);
+	sum = 0;
 	for (; i <=limit ; i++ ) {
 		sum += i;
 	}
+		sleep(1);
 	printf("thread =  %d calculated sum = %ld for numnber = %ld \n",pthread_self(),sum,limit);
 	pthread_mutex_unlock(&mutex);
 
