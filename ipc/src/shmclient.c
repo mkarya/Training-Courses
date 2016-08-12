@@ -24,9 +24,13 @@ int main (int argc, char ** argv) {
 
 	for(;counter < 17; counter++) {
 		printf("%c",shared_ptr[counter]); 
+		printf("\n"); 
 	}
  		
+	printf("hit enter if you like to kill server program\n");
+	scanf("%s",temp_ptr);
 	*shared_ptr =  '*';
+	shmdt(shared_ptr);
 	
 	return 0;
 }
